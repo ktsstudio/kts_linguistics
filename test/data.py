@@ -20,6 +20,6 @@ def load_globo_data() -> List[List[str]]:
     data = []
     for sheet_i in range(8):
         df = pd.read_excel(str(path), skiprows=1, sheetname=sheet_i)
-        sheet_data = [[it for it in row if isinstance(it, str)] for i, row in df.iterrows()]
+        sheet_data = [[it for it in row if isinstance(it, str)][1:] for i, row in df.iterrows()]
         data.extend(sheet_data)
     return data

@@ -6,6 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from src.transforms.basic_normalize import basic_normalize
 from src.transforms.normalize import normalize
 from src.transforms.spellfix import spellfix
+from src.transforms.phonetize import phonetize
 
 
 class TextTransformer:
@@ -30,22 +31,17 @@ class TextTransformer:
         return s
 
 
-class SimpleTextTransformer(TextTransformer):
-    def __init__(self):
+class PhoneticTextTransformer(TextTransformer):
+    def __init__(self, corpora):
         super().__init__()
 
         self.transform_pipeline.append(basic_normalize)
         self.transform_pipeline.append(normalize)
-
-
-class SpellfixTextTransformer(SimpleTextTransformer):
-    def __init__(self, corpora):
-        super().__init__()
-
+        self.transform_pipeline.append(phonetize)
         self.transform_pipeline.append(partial(spellfix, corpora=corpora))
 
 
-class TfidfTextTransformer(SpellfixTextTransformer):
+class TfidfTextTransformer(PhoneticTextTransformer):
     def __init__(self, corpora, stop_words=None, pretrained_tfidf=None):
         super().__init__(corpora)
 
@@ -66,7 +62,7 @@ class TfidfTextTransformer(SpellfixTextTransformer):
         return self.tfidf.transform([s])
 
 
-class WmdTextTransformer(SpellfixTextTransformer):
+class WmdTextTransformer(PhoneticTextTransformer):
     def __init__(self, corpora):
         super().__init__(corpora)
 

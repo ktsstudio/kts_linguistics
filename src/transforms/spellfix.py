@@ -7,6 +7,21 @@ def spellfix(s: str, corpora: Counter) -> str:
     new_words = []
 
     for word in s.split(' '):
+        if word == '':
+            continue
+
+        if word in corpora.keys():
+            new_words.append(word)
+            continue
+
+        if word.isdigit():
+            new_words.append(word)
+            continue
+        elif any(d in word for d in '1234567890'):
+            number = ''.join(c for c in word if c in '1234567890')
+            word = ''.join(c for c in word if c not in '1234567890')
+            new_words.append(number)
+
         best_match = None
         best_match_distance = None
         best_match_popularity = None
