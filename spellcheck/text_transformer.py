@@ -3,10 +3,10 @@ from typing import List, Any, Callable
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from src.transforms.basic_normalize import basic_normalize
-from src.transforms.normalize import normalize
-from src.transforms.spellfix import spellfix
-from src.transforms.phonetize import phonetize
+from spellcheck.transforms.basic_normalize import basic_normalize
+from spellcheck.transforms.normalize import normalize
+from spellcheck.transforms.spellfix import spellfix
+from spellcheck.transforms.phonetize import phonetize
 
 
 class TextTransformer:

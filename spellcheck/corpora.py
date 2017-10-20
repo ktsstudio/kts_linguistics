@@ -4,7 +4,7 @@ from pathlib import Path
 import pymorphy2
 from nltk import ToktokTokenizer
 
-from src.transforms.phonetize import phonetize
+from spellcheck.transforms.phonetize import phonetize
 
 
 def load_corpora() -> Counter:
