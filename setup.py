@@ -1,12 +1,15 @@
 from distutils.core import setup
 
+dependencies = []
+with open('requirements.txt') as f:
+    for line in f:
+        if line != '':
+            dependencies.append(line)
+
 setup(
-    name='spellcheck',
+    name='kts_spellcheck',
     version='',
-    packages=['spellcheck', 'spellcheck.transforms'],
-    url='',
-    license='',
-    author='Oleg Morozenkov',
-    author_email='o.morozenkov@ktsstudio.ru',
-    description=''
+    packages=['kts_spellcheck', 'kts_spellcheck.transforms'],
+    description='',
+    install_requires=dependencies,
 )
