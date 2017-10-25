@@ -39,4 +39,3 @@ if __name__ == '__main__':
                 words.add(word)
 
     print(' '.join(words))
-

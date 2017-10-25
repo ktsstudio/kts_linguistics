@@ -1,3 +1,4 @@
+import pickle
 from collections import Counter
 from pathlib import Path
 
@@ -7,12 +8,16 @@ from nltk import ToktokTokenizer
 from kts_spellcheck.transforms.phonetize import phonetize
 
 
-def load_corpora() -> Counter:
+def load_precomputed_corpora(path: Path) -> Counter:
+    with path.open() as f:
+        return pickle.load(f)
+
+
+def load_corpora(path: Path) -> Counter:
     words = Counter()
     tokenizer = ToktokTokenizer()
     alphabet = 'йцукенгшщзхъфывапролджэёячсмитьбю'
 
-    path = Path(__file__).resolve().parent / '..' / 'data' / 'corpora'
     for i, txtfile in enumerate(path.iterdir()):
         with txtfile.open() as f:
             for line in f:
@@ -38,7 +43,3 @@ def phonetize_corpora(corpora: Counter) -> Counter:
     for word, count in corpora.items():
         new_corpora[phonetize(word)] += count
     return new_corpora
-
-
-def load_phonetized_normalized_corpora() -> Counter:
-    return phonetize_corpora(normalize_corpora(load_corpora()))
