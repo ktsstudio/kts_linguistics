@@ -8,14 +8,13 @@ with open('requirements.txt') as f:
 
 setup(
     name='kts_linguistics',
-    version='0.0.2',
+    version='0.0.3',
     packages=['kts_linguistics',
               'kts_linguistics.corpora',
               'kts_linguistics.phonetics',
               'kts_linguistics.spellcheck',
               'kts_linguistics.string_transforms',
               'kts_linguistics.synonyms',
-              'kts_linguistics.test', ],
-    description='',
+              'kts_linguistics.test'],
     install_requires=dependencies,
 )

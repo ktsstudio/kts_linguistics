@@ -5,7 +5,7 @@ from typing import List
 def load_synsets() -> List[List[str]]:
     synsets = []
 
-    path = Path(__file__).resolve() / 'data' / 'synsets.txt'
+    path = Path(__file__).resolve().parent / 'data' / 'synsets.txt'
     with path.open(encoding='utf8') as f:
         for line in f:
             synset = []
@@ -16,7 +16,7 @@ def load_synsets() -> List[List[str]]:
                     continue
                 synset.append(word)
 
-            if len(synsets) <= 1:
+            if len(synset) <= 1:
                 continue
             synsets.append(synset)
 

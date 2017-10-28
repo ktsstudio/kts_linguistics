@@ -30,7 +30,7 @@ def load_corpora_from_directory_of_txt(path: Path) -> Corpora:
 def load_precomputed_corpora() -> Corpora:
     corpora = Corpora()
 
-    path = Path(__file__).resolve() / 'data' / 'precomputed_corpora_counters' / 'corpora.pkl'
+    path = Path(__file__).resolve().parent / 'data' / 'precomputed_corpora_counters' / 'corpora.pkl'
     with path.open(mode='rb') as f:
         corpora.update_with_counter(pickle.load(f))
 
@@ -40,7 +40,7 @@ def load_precomputed_corpora() -> Corpora:
 def load_precomputed_normalized_corpora() -> Corpora:
     corpora = Corpora()
 
-    path = Path(__file__).resolve() / 'data' / 'precomputed_corpora_counters' / 'normalized_corpora.pkl'
+    path = Path(__file__).resolve().parent / 'data' / 'precomputed_corpora_counters' / 'normalized_corpora.pkl'
     with path.open(mode='rb') as f:
         corpora.update_with_counter(pickle.load(f))
 
@@ -50,7 +50,7 @@ def load_precomputed_normalized_corpora() -> Corpora:
 def load_precomputed_phonetized_corpora() -> Corpora:
     corpora = Corpora()
 
-    path = Path(__file__).resolve() / 'data' / 'precomputed_corpora_counters' / 'phonetized_corpora.pkl'
+    path = Path(__file__).resolve().parent / 'data' / 'precomputed_corpora_counters' / 'phonetized_corpora.pkl'
     with path.open(mode='rb') as f:
         corpora.update_with_counter(pickle.load(f))
 
