@@ -19,11 +19,11 @@ class Corpora:
     def update_with_counter(self, counter: Counter):
         self._counter.update(counter)
 
-    def words(self) -> Iterable[str]:
-        return self._counter.keys()
+    def words(self) -> List[str]:
+        return list(self._counter.keys())
 
-    def words_with_counts(self) -> Iterable[str]:
-        return self._counter.items()
+    def words_with_counts(self) -> List[str]:
+        return list(self._counter.items())
 
     def __contains__(self, item: str) -> bool:
         return item in self._counter.keys()
