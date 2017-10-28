@@ -1,5 +1,5 @@
 from collections import Counter
-from typing import List
+from typing import List, Iterable
 
 
 class Corpora:
@@ -19,11 +19,11 @@ class Corpora:
     def update_with_counter(self, counter: Counter):
         self._counter.update(counter)
 
-    def words(self):
+    def words(self) -> Iterable[str]:
         return self._counter.keys()
 
-    def words_with_counts(self):
+    def words_with_counts(self) -> Iterable[str]:
         return self._counter.items()
 
-    def __contains__(self, item):
+    def __contains__(self, item: str) -> bool:
         return item in self._counter.keys()

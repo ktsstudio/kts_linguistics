@@ -1,4 +1,4 @@
-def phonetize(sentence):
+def phonetize(sentence: str) -> str:
     # http://forum.aeroion.ru/topic461.html
 
     new_sentence_array = []

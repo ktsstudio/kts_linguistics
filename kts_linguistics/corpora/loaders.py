@@ -27,7 +27,7 @@ def load_corpora_from_directory_of_txt(path: Path) -> Corpora:
     return corpora
 
 
-def load_precomputed_corpora():
+def load_precomputed_corpora() -> Corpora:
     corpora = Corpora()
 
     path = Path(__file__).resolve() / 'data' / 'precomputed_corpora_counters' / 'corpora.pkl'
@@ -37,7 +37,7 @@ def load_precomputed_corpora():
     return corpora
 
 
-def load_precomputed_normalized_corpora():
+def load_precomputed_normalized_corpora() -> Corpora:
     corpora = Corpora()
 
     path = Path(__file__).resolve() / 'data' / 'precomputed_corpora_counters' / 'normalized_corpora.pkl'
@@ -47,7 +47,7 @@ def load_precomputed_normalized_corpora():
     return corpora
 
 
-def load_precomputed_phonetized_corpora():
+def load_precomputed_phonetized_corpora() -> Corpora:
     corpora = Corpora()
 
     path = Path(__file__).resolve() / 'data' / 'precomputed_corpora_counters' / 'phonetized_corpora.pkl'
