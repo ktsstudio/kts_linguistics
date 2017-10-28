@@ -1,0 +1,16 @@
+from pathlib import Path
+from typing import List
+
+
+def load_synsets() -> List[List[str]]:
+    synsets = []
+
+    path = Path(__file__).resolve() / 'data' / 'synsets.txt'
+    with path.open(encoding='utf8') as f:
+        for line in f:
+            synset = []
+            for word in line.split(','):
+                synset.append(word)
+            synsets.append(synset)
+
+    return synsets

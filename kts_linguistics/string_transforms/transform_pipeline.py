@@ -14,12 +14,12 @@ class TransformPipeline:
         for t in self.transforms:
             t.fit(groups, pipeline=self)
 
-    def transform(self, s: str):
+    def transform(self, s: str) -> str:
         for t in self.transforms:
             s = t.transform(s)
         return s
 
-    def custom_transform(self, s: str, apply_before_transform: AbstractTransform):
+    def custom_transform(self, s: str, apply_before_transform: AbstractTransform) -> str:
         for t in self.transforms:
             if t == apply_before_transform:
                 break
