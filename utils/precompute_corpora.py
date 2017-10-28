@@ -1,14 +1,15 @@
 import pickle
 from pathlib import Path
 
-from kts_spellcheck.corpora import load_corpora, normalize_corpora, phonetize_corpora
+from kts_linguistics.corpora.loaders import load_corpora_from_directory_of_txt
+from kts_linguistics.corpora.transforms import normalize_corpora, phonetize_corpora
 
 if __name__ == '__main__':
-    dest_path_root = Path(__file__).resolve().parent / '..' / 'data' / 'precomputed_corpora'
-    corpora_path = Path(__file__).resolve().parent / '..' / 'data' / 'corpora'
+    dest_path_root = Path(__file__).resolve().parent / '..' / 'kts_linguistics' / 'corpora' / 'data' / 'precomputed_corpora_counters'
+    corpora_path = Path(__file__).resolve().parent / '..' / 'kts_linguistics' / 'corpora' / 'data' / 'corpora'
 
     print('Loading corpora...')
-    corpora = load_corpora(corpora_path)
+    corpora = load_corpora_from_directory_of_txt(corpora_path)
     print('Normalizing corpora...')
     normalized_corpora = normalize_corpora(corpora)
     print('Phonetizing corpora...')

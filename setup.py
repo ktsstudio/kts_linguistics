@@ -7,9 +7,9 @@ with open('requirements.txt') as f:
             dependencies.append(line)
 
 setup(
-    name='kts_spellcheck',
+    name='kts_linguistics',
     version='',
-    packages=['kts_spellcheck', 'kts_spellcheck.transforms'],
+    packages=['kts_linguistics', 'kts_linguistics.transforms'],
     description='',
     install_requires=dependencies,
 )

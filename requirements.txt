@@ -1,0 +1,8 @@
+pandas
+xlrd
+
+transliterate
+python-Levenshtein
+pymorphy2
+nltk
+scikit-learn

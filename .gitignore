@@ -170,3 +170,4 @@ venv.bak/
 .idea/
 ~*
 .vscode/
+/kts_linguistics/corpora/data/corpora/
