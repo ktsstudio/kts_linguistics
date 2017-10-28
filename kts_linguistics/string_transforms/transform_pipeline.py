@@ -1,6 +1,7 @@
-from typing import List
+from typing import List, Callable
 
 from kts_linguistics.string_transforms.abstract_transform import AbstractTransform
+from kts_linguistics.string_transforms.func_transform import FuncTransform
 
 
 class TransformPipeline:
@@ -9,6 +10,9 @@ class TransformPipeline:
 
     def add_transform(self, transform: AbstractTransform):
         self.transforms.append(transform)
+
+    def add_tranform_func(self, func: Callable[[str], str]):
+        self.add_transform(FuncTransform(func))
 
     def fit(self, groups: List[List[str]]):
         for t in self.transforms:
