@@ -1,10 +1,8 @@
 from typing import List, Any
 
-from kts_linguistics.string_transforms.transform_pipeline import TransformPipeline
-
 
 class AbstractTransform:
-    def fit(self, groups: List[List[str]], pipeline: TransformPipeline):
+    def fit(self, groups: List[List[str]], pipeline):
         pass
 
     def transform(self, s: Any) -> Any:
