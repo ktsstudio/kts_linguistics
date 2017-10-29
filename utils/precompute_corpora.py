@@ -18,10 +18,10 @@ if __name__ == '__main__':
     print('Writing to the disk...')
 
     with (dest_path_root / 'corpora.pkl').open(mode='wb') as f:
-        pickle.dump(corpora, f)
+        pickle.dump(corpora._counter, f)
 
     with (dest_path_root / 'normalized_corpora.pkl').open(mode='wb') as f:
-        pickle.dump(normalized_corpora, f)
+        pickle.dump(normalized_corpora._counter, f)
 
     with (dest_path_root / 'phonetized_corpora.pkl').open(mode='wb') as f:
-        pickle.dump(phonetized_corpora, f)
+        pickle.dump(phonetized_corpora._counter, f)
