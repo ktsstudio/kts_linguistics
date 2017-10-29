@@ -13,7 +13,7 @@ class TransformPipeline:
     def add_transform(self, transform: AbstractTransform):
         self._transforms.append(transform)
 
-    def add_tranform_func(self, func: Callable[[Any], Any]):
+    def add_transform_func(self, func: Callable[[Any], Any]):
         self.add_transform(FuncTransform(func))
 
     def cache_transforms(self):
