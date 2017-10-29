@@ -9,6 +9,8 @@ def phonetize(sentence: str) -> str:
 
 def phonetize_word(word: str) -> str:
     # http://forum.aeroion.ru/topic461.html
+    if len(word) == 0:
+        return word
     word = word.lower()
     word = _replace_chars(word)
     word = _remove_doubles(word)

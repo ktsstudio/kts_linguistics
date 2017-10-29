@@ -11,7 +11,7 @@ class AbstractTransform:
         return s
 
 
-class AbstractByWordTransform:
+class AbstractByWordTransform(AbstractTransform):
     def transform(self, l: List[str]) -> List[Any]:
         return [self.transform_word(w) for w in l]
 

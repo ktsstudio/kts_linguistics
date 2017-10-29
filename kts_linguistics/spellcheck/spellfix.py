@@ -34,6 +34,7 @@ def spellfix_word(word: str, corpora: Corpora) -> str:
             best_match_distance = distance
             best_match_popularity = popularity
 
+    return best_match
 
 
 def _has_digits(s: str):

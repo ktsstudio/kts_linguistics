@@ -1,7 +1,7 @@
 import pymorphy2
 
 from kts_linguistics.corpora.corpora import Corpora
-from kts_linguistics.string_transforms.phonetize import phonetize
+from kts_linguistics.phonetics.phonetize import phonetize_word
 
 
 def normalize_corpora(corpora: Corpora) -> Corpora:
@@ -15,5 +15,5 @@ def normalize_corpora(corpora: Corpora) -> Corpora:
 def phonetize_corpora(corpora: Corpora) -> Corpora:
     new_corpora = Corpora()
     for word, count in corpora.words_with_counts():
-        new_corpora.increment_popularity(phonetize(word), count)
+        new_corpora.increment_popularity(phonetize_word(word), count)
     return new_corpora
