@@ -1,0 +1,2 @@
+include kts_linguistics/corpora/data/precomputed_corpora_counters/*.pkl
+include kts_linguistics/synonyms/data/synsets.txt

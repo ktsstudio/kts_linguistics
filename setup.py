@@ -1,4 +1,5 @@
-from distutils.core import setup
+from setuptools import setup
+
 
 dependencies = []
 with open('requirements.txt') as f:
@@ -8,7 +9,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='kts_linguistics',
-    version='0.0.10',
+    version='0.0.11',
     packages=['kts_linguistics',
               'kts_linguistics.corpora',
               'kts_linguistics.phonetics',
@@ -17,4 +18,5 @@ setup(
               'kts_linguistics.synonyms',
               'kts_linguistics.test'],
     install_requires=dependencies,
+    include_package_data=True
 )
