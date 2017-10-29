@@ -1,15 +1,11 @@
 import pymorphy2
-from nltk import ToktokTokenizer
 
-from kts_linguistics.string_transforms.abstract_transform import AbstractTransform
+from kts_linguistics.string_transforms.abstract_transform import AbstractByWordTransform
 
 
-class MorphNormalizeTransform(AbstractTransform):
+class MorphNormalizeTransform(AbstractByWordTransform):
     def __init__(self):
-        self.tokenizer = ToktokTokenizer()
         self.morph = pymorphy2.MorphAnalyzer()
 
-    def transform(self, s: str) -> str:
-        words = self.tokenizer.tokenize(s)
-        words = [self.morph.parse(word)[0].normal_form for word in words]
-        return ' '.join(words)
+    def transform_word(self, s: str) -> str:
+        return self.morph.parse(s)[0].normal_form

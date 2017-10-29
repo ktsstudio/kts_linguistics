@@ -1,23 +1,22 @@
 def phonetize(sentence: str) -> str:
-    # http://forum.aeroion.ru/topic461.html
-
     new_sentence_array = []
-
     for word in sentence.split(' '):
         if word == '':
             continue
-
-        word = word.lower()
-        word = _replace_chars(word)
-        word = _remove_doubles(word)
-        word = _defeanate_consonants(word)
-        word = _remove_doubles(word)
-        word = _simplify_endings(word)
-        word = _delete_hard_and_soft_sign(word)
-
-        new_sentence_array.append(word)
-
+        new_sentence_array.append(phonetize_word(word))
     return ' '.join(new_sentence_array)
+
+
+def phonetize_word(word: str) -> str:
+    # http://forum.aeroion.ru/topic461.html
+    word = word.lower()
+    word = _replace_chars(word)
+    word = _remove_doubles(word)
+    word = _defeanate_consonants(word)
+    word = _remove_doubles(word)
+    word = _simplify_endings(word)
+    word = _delete_hard_and_soft_sign(word)
+    return word
 
 
 def _replace_chars(word):
