@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='kts_linguistics',
-    version='0.0.7',
+    version='0.0.8',
     packages=['kts_linguistics',
               'kts_linguistics.corpora',
               'kts_linguistics.phonetics',
