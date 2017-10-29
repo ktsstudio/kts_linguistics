@@ -1,7 +1,6 @@
 from typing import List, Callable, Any
 
 from kts_linguistics.string_transforms.abstract_transform import AbstractTransform
-from kts_linguistics.string_transforms.utility_transforms import FuncTransform
 
 
 class TransformPipeline:
@@ -12,9 +11,6 @@ class TransformPipeline:
 
     def add_transform(self, transform: AbstractTransform):
         self._transforms.append(transform)
-
-    def add_transform_func(self, func: Callable[[Any], Any]):
-        self.add_transform(FuncTransform(func))
 
     def cache_transforms(self):
         self._is_caching = True

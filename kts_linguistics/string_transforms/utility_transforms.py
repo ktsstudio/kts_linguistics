@@ -13,6 +13,14 @@ class FuncTransform(AbstractTransform):
         return self.func(s)
 
 
+class FuncByWordTransform(AbstractByWordTransform):
+    def __init__(self, func: Callable[[str], Any]):
+        self.func = func
+
+    def transform_word(self, s: str) -> Any:
+        return self.func(s)
+
+
 class TokenizeTransform(AbstractTransform):
     def __init__(self):
         self.tokenizer = ToktokTokenizer()
