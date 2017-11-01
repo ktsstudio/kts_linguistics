@@ -1,5 +1,6 @@
 import pickle
 from pathlib import Path
+from typing import List
 
 from nltk import ToktokTokenizer
 
@@ -11,15 +12,13 @@ def load_corpora_from_directory_of_txt(path: Path) -> Corpora:
     corpora = Corpora()
 
     tokenizer = ToktokTokenizer()
-    alphabet = RUSSIAN_ALPHABET
-
     for i, txtfile in enumerate(path.iterdir()):
         if not txtfile.is_file():
             continue
-        with txtfile.open(encoding='utf8') as f:
+        with txtfile.open(encoding='utf-8') as f:
             for line in f:
                 line = line.lower()
-                line = ''.join(c if c in alphabet else ' ' for c in line)
+                line = ''.join(c if c in RUSSIAN_ALPHABET else ' ' for c in line)
                 for word in tokenizer.tokenize(line):
                     if word != '':
                         corpora.increment_popularity(word)
@@ -55,3 +54,9 @@ def load_precomputed_phonetized_corpora() -> Corpora:
         corpora.update_with_counter(pickle.load(f))
 
     return corpora
+
+
+def load_default_sentences() -> List[str]:
+    path = Path(__file__).resolve().parent / 'data' / 'corpora' / 'rus_texts.txt'
+    with path.open(encoding='utf-8') as f:
+        return f.readlines()
