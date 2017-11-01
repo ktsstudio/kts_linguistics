@@ -59,4 +59,22 @@ def load_precomputed_phonetized_corpora() -> Corpora:
 def load_default_sentences() -> List[str]:
     path = Path(__file__).resolve().parent / 'data' / 'corpora' / 'rus_texts.txt'
     with path.open(encoding='utf-8') as f:
-        return f.readlines()
+        result = f.readlines()
+        result = [l.strip() for l in result]
+        return result
+
+
+def load_precomputed_normalized_default_sentences() -> List[str]:
+    path = Path(__file__).resolve().parent / 'data' / 'precomputed_sentences' / 'normalized_rus_texts.txt'
+    with path.open(encoding='utf-8') as f:
+        result = f.readlines()
+        result = [l.strip() for l in result]
+        return result
+
+
+def load_precomputed_phonetized_default_sentences() -> List[str]:
+    path = Path(__file__).resolve().parent / 'data' / 'precomputed_sentences' / 'phonetized_rus_texts.txt'
+    with path.open(encoding='utf-8') as f:
+        result = f.readlines()
+        result = [l.strip() for l in result]
+        return result
