@@ -1,6 +1,6 @@
 from kts_linguistics.corpora.corpora import Corpora
-from kts_linguistics.spellcheck.spellfix import spellfix
-from kts_linguistics.string_transforms.abstract_transform import AbstractTransform, AbstractByWordTransform
+from kts_linguistics.spellcheck.spellfix import spellfix_word
+from kts_linguistics.string_transforms.abstract_transform import AbstractByWordTransform
 
 
 class SpellfixTransform(AbstractByWordTransform):
@@ -13,7 +13,7 @@ class SpellfixTransform(AbstractByWordTransform):
         if word in self.cache:
             return self.cache[word]
 
-        spellfixed_word = spellfix(word, corpora=self.corpora)
+        spellfixed_word = spellfix_word(word, corpora=self.corpora)
 
         if self.do_cache:
             if spellfixed_word != word:
