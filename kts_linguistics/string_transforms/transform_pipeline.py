@@ -5,39 +5,23 @@ from kts_linguistics.string_transforms.abstract_transform import AbstractTransfo
 
 class TransformPipeline:
     def __init__(self):
-        self._transforms = list()
-        self._cache = dict()
-        self._is_caching = False
+        self.transforms = list()
 
     def add_transform(self, transform: AbstractTransform):
-        self._transforms.append(transform)
-
-    def cache_transforms(self):
-        self._is_caching = True
-
-    def stop_cache_transforms(self):
-        self._is_caching = False
-
-    def clear_cache_transforms(self):
-        self._cache.clear()
+        self.transforms.append(transform)
 
     def fit(self, groups: List[List[str]]):
-        for t in self._transforms:
+        for t in self.transforms:
             t.fit(groups, pipeline=self)
 
-    def transform(self, s: str) -> Any:
-        if s in self._cache:
-            return self._cache[s]
-
+    def transform(self, s: Any) -> Any:
         transformed_s = s
-        for t in self._transforms:
+        for t in self.transforms:
             transformed_s = t.transform(transformed_s)
-        if self._is_caching:
-            self._cache[s] = transformed_s
         return transformed_s
 
-    def custom_transform(self, s: str, apply_before_transform: AbstractTransform) -> Any:
-        for t in self._transforms:
+    def custom_transform(self, s: Any, apply_before_transform: AbstractTransform) -> Any:
+        for t in self.transforms:
             if t == apply_before_transform:
                 break
             s = t.transform(s)
