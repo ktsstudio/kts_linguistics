@@ -1,13 +1,8 @@
 from transliterate import translit
 
-from kts_linguistics.string_transforms.abstract_transform import AbstractTransform, AbstractByWordTransform
+from kts_linguistics.string_transforms.abstract_transform import AbstractByWordTransform
 
 
-class TranslitTransform(AbstractTransform):
-    def transform(self, s: str) -> str:
-        return translit(s, 'ru')
-
-
-class TranslitByWordTransform(AbstractByWordTransform):
+class TranslitTransform(AbstractByWordTransform):
     def transform_word(self, s: str) -> str:
         return translit(s, 'ru')

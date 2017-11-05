@@ -22,8 +22,8 @@ class FuncByWordTransform(AbstractByWordTransform):
 
 
 class TokenizeTransform(AbstractTransform):
-    def __init__(self):
-        self.tokenizer = ToktokTokenizer()
+    def __init__(self, tokenizer=None):
+        self.tokenizer = tokenizer or ToktokTokenizer()
 
     def transform(self, s: str) -> List[str]:
         return self.tokenizer.tokenize(s)
