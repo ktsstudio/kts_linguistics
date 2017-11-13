@@ -34,4 +34,14 @@ class JoinTransform(AbstractByWordTransform):
         self.join_str = join_str
 
     def transform(self, l: List[str]) -> str:
-        return self.join_str.join(l)
+        return self.join_str.join([w for w in l if w != ''])
+
+
+class StartOneWordPipelineUtilityTransform(AbstractTransform):
+    def transform(self, s: str) -> List[str]:
+        return [s]
+
+
+class EndOneWordPipelineUtilityTransform(AbstractTransform):
+    def transform(self, l: List[str]) -> str:
+        return l[0]

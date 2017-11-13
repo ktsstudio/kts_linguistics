@@ -1,4 +1,5 @@
-from typing import List, Callable, Any
+import copy
+from typing import List, Any
 
 from kts_linguistics.string_transforms.abstract_transform import AbstractTransform
 
@@ -9,6 +10,12 @@ class TransformPipeline:
 
     def add_transform(self, transform: AbstractTransform):
         self.transforms.append(transform)
+
+    def remove_transform_by_class(self, cls):
+        self.transforms = [t for t in self.transforms if not isinstance(t, cls)]
+
+    def copy(self):
+        return copy.copy(self)
 
     def fit(self, groups: List[List[str]]):
         for t in self.transforms:
