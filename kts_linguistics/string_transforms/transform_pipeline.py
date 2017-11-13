@@ -18,7 +18,9 @@ class TransformPipeline:
         self.transforms = [t for t in self.transforms if not isinstance(t, cls)]
 
     def copy(self):
-        return copy.copy(self)
+        c = copy.copy(self)
+        c.transforms = [it for it in c.transforms]  # copy list
+        return c
 
     def fit(self, groups: List[List[str]]):
         for t in self.transforms:
@@ -33,6 +35,8 @@ class TransformPipeline:
             transformed_s = t.transform(transformed_s)
 
         if self.do_cache:
+            if isinstance(transformed_s, list):
+                transformed_s = tuple(transformed_s)
             self.cache[s] = transformed_s
 
         return transformed_s
