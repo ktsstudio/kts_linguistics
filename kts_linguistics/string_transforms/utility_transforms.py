@@ -34,7 +34,7 @@ class JoinTransform(AbstractByWordTransform):
         self.join_str = join_str
 
     def transform(self, l: List[str]) -> str:
-        return self.join_str.join([w for w in l if w != ''])
+        return self.join_str.join(w for w in l if w != '')
 
 
 class StartOneWordPipelineUtilityTransform(AbstractTransform):
@@ -45,3 +45,8 @@ class StartOneWordPipelineUtilityTransform(AbstractTransform):
 class EndOneWordPipelineUtilityTransform(AbstractTransform):
     def transform(self, l: List[str]) -> str:
         return l[0]
+
+
+class RemoveEmptyWordsTransform(AbstractTransform):
+    def transform(self, l: List[str]) -> List[str]:
+        return [w for w in l if w != '']
