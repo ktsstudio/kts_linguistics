@@ -1,3 +1,6 @@
+from kts_linguistics.chars import RUSSIAN_ALPHABET
+
+
 def phonetize(sentence: str) -> str:
     new_sentence_array = []
     for word in sentence.split(' '):
@@ -99,8 +102,9 @@ def _remove_doubles(word):
     new_chars_array = []
 
     for i in range(len(word)):
-        if i == 0 or word[i - 1] != word[i]:
-            new_chars_array.append(word[i])
+        if i != 0 and word[i - 1] == word[i] and word[i] in RUSSIAN_ALPHABET:
+            continue
+        new_chars_array.append(word[i])
 
     return ''.join(new_chars_array)
 
