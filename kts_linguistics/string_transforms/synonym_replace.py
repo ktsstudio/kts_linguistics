@@ -6,7 +6,7 @@ from kts_linguistics.string_transforms.abstract_transform import AbstractTransfo
 
 
 class SynonymReplaceTransform(AbstractTransform):
-    def __init__(self, synsets, tokenizer=None):
+    def __init__(self, synsets: List[List[str]], tokenizer=None):
         self.tokenizer = tokenizer or ToktokTokenizer()
 
         list_synsets = list()
@@ -31,6 +31,7 @@ class SynonymReplaceTransform(AbstractTransform):
     def transform(self, sent: List[str]) -> List[str]:
         for n in range(self.max_word_token_list_len, -1, -1):
             new_sent = list()
+
             i = 0
             while i < len(sent):
                 n_gram = tuple(sent[i:i+n])
@@ -42,7 +43,9 @@ class SynonymReplaceTransform(AbstractTransform):
                 else:
                     new_sent.append(n_gram[0])
                     i += 1
+
             if len(new_sent) == 0:
                 new_sent = sent
             sent = new_sent
+
         return sent
