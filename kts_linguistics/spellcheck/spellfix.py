@@ -5,12 +5,12 @@ from kts_linguistics.chars import DIGITS
 from kts_linguistics.corpora.corpora import Corpora
 
 
-def spellfix(s: str, corpora: Corpora) -> str:
+def spellfix(s: str, corpora: Corpora, fix_threshold: float) -> str:
     tokenizer = ToktokTokenizer()
-    return ' '.join(spellfix_word(word, corpora) for word in tokenizer.tokenize(s))
+    return ' '.join(spellfix_word(word, corpora, fix_threshold) for word in tokenizer.tokenize(s))
 
 
-def spellfix_word(word: str, corpora: Corpora) -> str:
+def spellfix_word(word: str, corpora: Corpora, fix_threshold: float) -> str:
     if len(word) <= 3:
         return word
     if word in corpora:
@@ -19,7 +19,7 @@ def spellfix_word(word: str, corpora: Corpora) -> str:
         return word
 
     if _has_digits(word):
-        return ' '.join([spellfix_word(it, corpora) for it in _split_chars_and_digits(word)])
+        return ' '.join([spellfix_word(it, corpora, fix_threshold) for it in _split_chars_and_digits(word)])
 
     best_match = None
     best_match_distance = None
@@ -34,7 +34,9 @@ def spellfix_word(word: str, corpora: Corpora) -> str:
             best_match_distance = distance
             best_match_popularity = popularity
 
-    return best_match
+    norm_distance = best_match_distance / len(word)
+
+    return best_match if norm_distance < fix_threshold else word
 
 
 def _has_digits(s: str):
