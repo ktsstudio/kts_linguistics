@@ -27,6 +27,9 @@ class TransformPipeline:
             t.fit(groups, pipeline=self)
 
     def transform(self, s: Any) -> Any:
+        if isinstance(s, list):
+            s = tuple(s)
+
         if s in self.cache:
             return self.cache[s]
 
