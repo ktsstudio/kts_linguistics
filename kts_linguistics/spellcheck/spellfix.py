@@ -34,6 +34,9 @@ def spellfix_word(word: str, corpora: Corpora, fix_threshold: float) -> str:
             best_match_distance = distance
             best_match_popularity = popularity
 
+    if best_match is None or best_match_distance is None:
+        return word
+            
     norm_distance = best_match_distance / len(word)
 
     return best_match if norm_distance < fix_threshold else word
