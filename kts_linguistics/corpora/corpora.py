@@ -44,4 +44,4 @@ class Corpora:
         return self._counter.items()
 
     def __contains__(self, item: str) -> bool:
-        return item in self._counter.keys()
+        return item in self._counter
