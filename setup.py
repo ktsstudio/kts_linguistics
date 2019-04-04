@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='kts_linguistics',
-    version='0.1.7',
+    version='0.1.8',
     description='Set of packages: spellcheck, phonetics, text processing and more',
     long_description=open('README.md').read(),
 
@@ -20,12 +20,12 @@ setup(
     ],
 
     install_requires=[
-        'scikit-learn>=0.19,<0.20',
-        'nltk>=3.2,<3.3',
-        'gensim>=3.1,<3.2',
+        'scikit-learn>=0.19,<0.21',
+        'nltk>=3.2,<3.5',
+        'gensim>=3.1,<3.8',
         'pymorphy2>=0.8,<0.9',
         'transliterate>=1.10,<1.11',
-        'python-Levenshtein>=0.12,<0.13'
+        'python-Levenshtein>=0.12,<0.13',
     ],
 
     packages=['kts_linguistics',
