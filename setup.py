@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='kts_linguistics',
-    version='0.1.8',
+    version='0.1.9',
     description='Set of packages: spellcheck, phonetics, text processing and more',
     long_description=open('README.md').read(),
 
