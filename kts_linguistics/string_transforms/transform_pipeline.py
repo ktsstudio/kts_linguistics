@@ -5,10 +5,10 @@ from kts_linguistics.string_transforms.abstract_transform import AbstractTransfo
 
 
 class TransformPipeline:
-    def __init__(self, do_cache=False):
+    def __init__(self, do_cache=False, cache=None):
         self.transforms = list()
 
-        self.cache = dict()
+        self.cache = cache if cache is not None else dict()
         self.do_cache = do_cache
 
     def add_transform(self, transform: AbstractTransform):

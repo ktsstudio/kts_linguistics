@@ -7,9 +7,10 @@ class SpellfixTransform(AbstractByWordTransform):
     def __init__(self,
                  corpora: Corpora,
                  do_cache: bool = False,
+                 cache: dict = None,
                  fix_threshold: float = 1.0):
         self.corpora = corpora
-        self.cache = dict()
+        self.cache = cache if cache is not None else dict()
         self.do_cache = do_cache
         self.fix_threshold = fix_threshold
 

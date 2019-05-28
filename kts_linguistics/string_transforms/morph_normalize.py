@@ -4,9 +4,9 @@ from kts_linguistics.string_transforms.abstract_transform import AbstractByWordT
 
 
 class MorphNormalizeTransform(AbstractByWordTransform):
-    def __init__(self, do_cache=False):
-        self.morph = pymorphy2.MorphAnalyzer()
-        self.cache = dict()
+    def __init__(self, morph=None, do_cache=False, cache=None):
+        self.morph = morph or pymorphy2.MorphAnalyzer()
+        self.cache = cache if cache is not None else dict()
         self.do_cache = do_cache
 
     def transform_word(self, word: str) -> str:
