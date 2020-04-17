@@ -7,3 +7,14 @@ This library includes several sub-packages:
 - `corpora` – Loading corpora
 - `synonyms` – Finding synonyms
 - `test` – Test utilities
+
+## Install
+```sh
+pip install https://github.com/ktsstudio/kts_linguistics/archive/v0.1.6.tar.gz
+```
+
+## Examples
+[Examples](https://github.com/ktsstudio/kts_linguistics/tree/master/examples).
+
+## License
+MIT License.
